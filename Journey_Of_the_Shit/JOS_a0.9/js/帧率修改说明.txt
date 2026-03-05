@@ -1,0 +1,51 @@
+# 帧率修改说明
+
+## 修改内容
+
+### 1. 游戏逻辑帧率
+- 文件：`rpg_managers.js` 第1796行
+- 修改：将 `SceneManager._deltaTime = 1.0 / 60.0;` 改为 `SceneManager._deltaTime = 1.0 / 70.0;`
+- 作用：将游戏逻辑更新频率从60FPS调整为70FPS
+
+### 2. FPS显示器配置
+- 文件：`rpg_core.js` 第2622行
+- 修改：在FPSMeter配置中添加 `maxFps: 70`
+- 作用：使FPS显示器的最大显示值与实际帧率匹配
+
+### 3. 渲染跳过机制
+- 文件：`rpg_core.js` 第1882行
+- 修改：将 `this._skipCount = Math.min(Math.floor(elapsed / 15), this._maxSkip);` 改为 `this._skipCount = Math.min(Math.floor(elapsed / 14), this._maxSkip);`
+- 作用：调整渲染跳过阈值，从15ms改为14ms，以支持70FPS的渲染
+
+### 4. PIXI.js时间设置
+- 文件：`libs/pixi.js` 第20428行
+- 修改：将 `TARGET_FPMS: 0.06,` 改为 `TARGET_FPMS: 0.07,`
+- 作用：调整PIXI.js的时间计算，从60FPS改为70FPS
+
+### 5. 音频更新频率
+- 文件：`rpg_core.js` 第8877-8880行
+- 修改：将 `60 * duration` 改为 `70 * duration`，将 `1000 / 60` 改为 `1000 / 70`
+- 作用：调整音频的更新频率，从60FPS改为70FPS
+
+### 6. 帧率控制
+- 文件：`rpg_managers.js` 第1896行
+- 修改：将 `requestAnimationFrame(this.update.bind(this));` 改为 `setTimeout(this.update.bind(this), 14);`
+- 作用：绕过浏览器的帧率限制，使用setTimeout来控制帧率
+
+## 恢复默认设置
+
+如果需要恢复默认的60FPS，只需将所有修改改回原来的值：
+
+1. `SceneManager._deltaTime = 1.0 / 60.0;`
+2. 移除 `maxFps: 70` 配置
+3. `this._skipCount = Math.min(Math.floor(elapsed / 15), this._maxSkip);`
+4. `TARGET_FPMS: 0.06,`
+5. `60 * duration` 和 `1000 / 60`
+6. `requestAnimationFrame(this.update.bind(this));`
+
+## 注意事项
+
+- 帧率设置会影响游戏性能和流畅度
+- 高帧率会增加系统负担，可能在低配置设备上导致性能问题
+- 实际帧率可能会受到硬件性能和显示器刷新率的影响
+- 如果遇到卡顿问题，可以考虑进一步优化游戏性能或调整帧率设置
