@@ -46,20 +46,20 @@ DataManager._lastAccessedId = 1;
 DataManager._errorUrl       = null;
 
 DataManager._databaseFiles = [
-    { name: '$dataActors',       src: 'Actors.json'       },
-    { name: '$dataClasses',      src: 'Classes.json'      },
-    { name: '$dataSkills',       src: 'Skills.json'       },
-    { name: '$dataItems',        src: 'Items.json'        },
-    { name: '$dataWeapons',      src: 'Weapons.json'      },
-    { name: '$dataArmors',       src: 'Armors.json'       },
-    { name: '$dataEnemies',      src: 'Enemies.json'      },
-    { name: '$dataTroops',       src: 'Troops.json'       },
-    { name: '$dataStates',       src: 'States.json'       },
-    { name: '$dataAnimations',   src: 'Animations.json'   },
-    { name: '$dataTilesets',     src: 'Tilesets.json'     },
-    { name: '$dataCommonEvents', src: 'CommonEvents.json' },
-    { name: '$dataSystem',       src: 'System.json'       },
-    { name: '$dataMapInfos',     src: 'MapInfos.json'     }
+    { name: '$dataActors',       src: 'actors.json'       },
+    { name: '$dataClasses',      src: 'classes.json'      },
+    { name: '$dataSkills',       src: 'skills.json'       },
+    { name: '$dataItems',        src: 'items.json'        },
+    { name: '$dataWeapons',      src: 'weapons.json'      },
+    { name: '$dataArmors',       src: 'armors.json'       },
+    { name: '$dataEnemies',      src: 'enemies.json'      },
+    { name: '$dataTroops',       src: 'troops.json'       },
+    { name: '$dataStates',       src: 'states.json'       },
+    { name: '$dataAnimations',   src: 'animations.json'   },
+    { name: '$dataTilesets',     src: 'tilesets.json'     },
+    { name: '$dataCommonEvents', src: 'commonevents.json' },
+    { name: '$dataSystem',       src: 'system.json'       },
+    { name: '$dataMapInfos',     src: 'mapinfos.json'     }
 ];
 
 DataManager.loadDatabase = function() {
