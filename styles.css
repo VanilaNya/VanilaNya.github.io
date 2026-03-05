@@ -1,0 +1,406 @@
+.inbody {
+    padding: 30px; /* 内边距，确保内容与边框有间距 */
+    margin: 20px auto; /* 居中对齐，顶部和底部留出间距 */
+    border: 2px solid #ccc; /* 边框颜色和宽度 */
+    border-radius: 15px; /* 圆角半径 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    background-color: #fff; /* 背景颜色 */
+    width: 80%; /* 宽度为网页宽度的 80% */
+    line-height: 1.3; /* 行高 */
+}
+
+/* 移动端适配 (屏幕宽度 ≤ 768px) */
+@media (max-width: 768px) {
+    .inbody {
+      width: 90%;
+      padding: 20px;
+      margin: 15px auto; /* 适当缩小外边距 */
+      border-radius: 12px; /* 微调圆角适应小屏幕 */
+    }
+  }
+  
+/* 小屏手机优化 (屏幕宽度 ≤ 480px) */
+@media (max-width: 480px) {
+    .inbody {
+        padding: 5px;
+        font-size: 0.9em; /* 适当缩小字号 */
+    }
+}
+
+
+p {
+    margin: 5px;
+    line-height: 1.1; /* 设置段落行高 */
+}
+
+
+  
+.loading {
+    /* 添加一个预加载状态的样式，如一个加载指示动画 */
+    background: linear-gradient(45deg, #bdbdbd, #00ff00);
+    height: 100px;
+    width: 100px;   
+    display: inline-block;
+  }
+
+/* HTML 和 Body 基础布局 */
+html {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+.navbar-placeholder {
+    margin: 0;
+    background-color: #333; /* 背景颜色，与导航栏一致 */
+    overflow: hidden; /* 清除浮动 */
+    height: 54px; /* 设置高度，与导航栏一致 */
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    color: #f2f2f2; /* 文字颜色，与导航栏一致 */
+    font-size: 16px; /* 设置字体大小 */
+    grid-row: 1;
+}
+
+.navbar {
+    margin: 0;
+    background-color: #333; /* 背景颜色 */
+    overflow: hidden; /* 清除浮动 */
+}
+
+.navbar a {
+    float: left; /* 使链接水平排列 */
+    display: block; /* 使链接块级显示 */
+    color: #f2f2f2; /* 链接颜色 */
+    text-align: center; /* 文字居中 */
+    padding: 15px 20px; /* 内边距 */
+    text-decoration: none; /* 去掉下划线 */
+}
+
+.navbar a:hover {
+    background-color: #ddd; /* 鼠标悬停时背景颜色 */
+    color: black; /* 鼠标悬停时文字颜色 */
+}
+
+/* 二级导航的样式 */
+.dropdown {
+    float: left; /* 二级导航与主导航并排 */
+}
+
+.dropdown .dropbtn {
+    cursor: pointer; /* 鼠标悬停时为手指样式 */
+}
+
+.dropdown-content {
+    display: none; /* 默认隐藏二级导航 */
+    position: absolute; /* 改为相对定位 */
+    background-color: #464646; /* 背景颜色 */
+    min-width: 70px; /* 最小宽度 */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 阴影 */
+    z-index: 1; /* 确保位于上层 */
+    margin-top: 45px; /* 设置顶部边距，使其在主导航下方 */
+}
+
+.dropdown-content a {
+    float: none; /* 链接块级 */
+    color: rgb(255, 255, 255); /* 链接颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    text-align: left; /* 左对齐 */
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* 悬停时背景颜色 */
+}
+
+/* 悬停时显示二级导航 */
+.dropdown:hover .dropdown-content {
+    display: block; /* 显示二级导航 */
+}
+
+
+
+.vertical-profile-table {
+    width: 100%;
+    max-width: 600px;
+    font-family: 'Arial', sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+/* 表头样式 */
+.vertical-profile-table th {
+    background-color: #f8f9fa;
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-width: 0 1px 1px 0;
+}
+
+/* 单元格样式 */
+.vertical-profile-table td {
+    padding: 12px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-width: 0 1px 1px 0;
+    vertical-align: top;
+}
+
+/* 圆角处理 */
+.vertical-profile-table tr:first-child th {
+    border-top-left-radius: 12px;
+}
+.vertical-profile-table tr:first-child td {
+    border-top-right-radius: 12px;
+}
+.vertical-profile-table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+.vertical-profile-table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* 边框优化 */
+.vertical-profile-table td:last-child,
+.vertical-profile-table th:last-child {
+    border-right: 0;
+}
+
+/* 隔行背景色 */
+.vertical-profile-table tbody tr:nth-child(even) {
+    background-color: #e2e4e6;
+}
+
+/* 悬停效果 */
+.vertical-profile-table tr:hover {
+    background-color: #c6c8ca;
+    transition: background-color 0.2s;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .vertical-profile-table {
+        border-radius: 8px;
+        margin: 10px;
+        font-size: 14px;
+    }
+    .vertical-profile-table th,
+    .vertical-profile-table td {
+        padding: 12px 15px;
+    }
+}
+
+  
+
+
+/* 隐藏文本 */
+.hidetext {
+    color: black;           /* 字体颜色为黑色 */
+    background-color: black; /* 背景颜色为黑色 */
+    transition: color 0.3s; /* 添加过渡效果 */
+}
+
+.hidetext:hover {
+    color: white;          /* 鼠标悬停时字体变为白色 */
+}
+
+
+
+/* 展开按钮 */
+.fold {
+    position: relative; /* 使伪元素相对于折叠内容定位 */
+    overflow: hidden; /* 防止内容在显示时溢出 */
+    max-height: 0; /* 初始最大高度为0 */
+    opacity: 0; /* 开始时不可见 */
+    padding-left: 2px; /* 向右移动5px */
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding-left 0.5s ease; /* 添加边距变化的过渡效果 */
+}
+
+.fold.show {
+    margin: 5px;
+    max-height: 2000px; /* 设置一个适合的最大高度，确保内容可以完整显示 */
+    opacity: 1; /* 显示内容 */
+    padding-left: 7px; /* 向右移动5px */
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding-left 0.5s ease; /* 添加边距变化的过渡效果 */
+}
+
+.fold::before {/* 添加竖线 */
+    content: ''; /* 创建一个空内容 */
+    position: absolute; /* 绝对定位 */
+    left: 1px; /* 根据需要设置竖线的位置 */
+    top: 0; /* 从顶部开始 */
+    bottom: 0; /* 延伸到底部 */
+    width: 2px; /* 设置竖线的宽度 */
+    background-color: black; /* 设置竖线的颜色 */
+    transition: background-color 0.5s ease; /* 可选：设置颜色变化的过渡效果 */
+}
+
+
+
+/* 图片下小字 */
+figure {
+    display: inline-block; /* 使图像和文字在一起 */
+    text-align: center;    /* 使文字居中 */
+    margin: 0;             /* 去掉默认边距 */
+}
+figcaption {
+    color: gray; 
+    font-size: 12px;
+}
+
+
+
+/* 提示栏样式 */
+.tooltip {
+    position: relative; /* 相对定位 */
+    text-decoration: underline; /* 添加下划线 */
+}
+
+.tooltip:hover {
+    background-color: lightgray; /* 鼠标悬停时背景变为浅灰色 */
+}
+
+.tooltip:hover::after {
+    content: attr(data-text); /* 提示信息内容 */
+    z-index: 1; /* 确保位于上层 */
+    position: absolute; /* 绝对定位 */
+    bottom: 95%; /* 提示位于 tooltip 之上 */
+    left: 50%; /* 居中定位 */
+    transform: translateX(-50%); /* 居中 */
+    background: #333; /* 提示信息的背景颜色 */
+    color: white; /* 提示信息的字体颜色 */
+    padding: 5px 10px; /* 内边距 */
+    border-radius: 4px; /* 圆角边框 */
+    white-space: pre;
+}
+
+
+/* 对话框样式 */
+        .dialog-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .dialog-box {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            min-width: 300px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            animation: dialogIn 0.3s ease-out;
+        }
+
+        @keyframes dialogIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .dialog-title {
+            margin: 0 0 16px 0;
+            color: #1a1a1a;
+            font-size: 20px;
+        }
+
+        .dialog-content {
+            color: #666;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .dialog-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .dialog-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-weight: 500;
+        }
+
+
+/* 页脚 */
+footer {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #8f8f8f; /* 灰色背景 */
+    color: #0e0e0e; /* 文字颜色 */
+    font: inherit;
+    padding: 16px 12px;
+    text-align: center; /* 居中 */
+    z-index: 1000;
+}
+
+.custom-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    border-radius: 5px; /* 添加圆角 */
+}
+
+.custom-menu ul {
+    list-style: none; /* 移除列表样式 */
+    margin: 0; /* 去掉默认的外边距 */
+    padding: 0; /* 去掉默认的内边距 */
+}
+
+.custom-menu li {
+    padding: 8px 12px; /* 设置内边距 */
+    cursor: pointer;
+    font-size: 14px; /* 调整字体大小 */
+    border-bottom: 1px solid #ddd; /* 为每个选项添加底部边框 */
+    background-color: white; /* 默认背景色 */
+}
+
+.custom-menu li:last-child {
+    border-bottom: none; /* 移除最后一个选项的底部边框 */
+}
+
+.custom-menu li:hover {
+    background-color: #dbdbdb; /* 鼠标悬停时的背景颜色 */
+    border-radius: 5px; /* 鼠标悬停时添加圆角效果 */
+}
+
+.group {
+    content: ''; /* 创建一个空内容 */
+    position: absolute; /* 绝对定位 */
+    left: 1px; /* 根据需要设置竖线的位置 */
+    top: 0; /* 从顶部开始 */
+    bottom: 0; /* 延伸到底部 */
+    width: 2px; /* 设置竖线的宽度 */
+    background-color: black; /* 设置竖线的颜色 */
+}
+
+*[b] {
+    font-weight: bold;
+}

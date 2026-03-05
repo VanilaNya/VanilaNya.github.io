@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站内设置</title>
+    <script src="/script2.js"></script><!--引入脚本-->
+    <link rel="stylesheet" type="text/css" href="/styles.css"> <!-- 引入样式表 -->
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+</head>
+<header>
+    <div data-navbar-id="main" class="navbar-placeholder"></div>
+</header>
+<body>
+<div class="inbody"> 
+  
+    <h1>站内设置！</h1> 
+    <p>你可以在这里修改网站的设置~帮助你更好的使用！</p> 
+    <p>由于这是静态网站，所以依靠Cookie存储用户数据，删浏览器缓存会导致恢复默认设置哦</p> 
+    <p>已加载的页面刷新生效(指你点返回后的页面)</p> 
+    <br> 
+    <label> 
+    <input type="checkbox" id="nightModeSwitch"> 
+        夜间模式 
+    </label><a>背景变灰，文字变白</a> 
+    <br> 
+    <label> 
+        <input type="checkbox" id="toTopSwitch"> 
+        回顶部按钮 
+    </label><a>控制回顶部按钮的显示(刷新生效)</a>
+    <br> 
+    <label> 
+        <input type="checkbox" id="linkCheckSwitch"> 
+        自动检测链接 
+    </label><a>自动检查站外链接有效性(超时标红/可能失效标黄)(也就是获取网站图标，因为同源限制很难精准检测)</a>
+
+    <br>
+    <div style="margin-top:10px;">
+      <label>点击效果：
+        <select id="particleClickMode">
+          <option value="normal">正常</option>
+          <option value="reduced">减少</option>
+          <option value="off">关闭</option>
+        </select>
+      </label>
+      <br>
+      <label>输入效果：
+        <select id="particleInputMode">
+          <option value="normal">正常</option>
+          <option value="reduced">减少</option>
+          <option value="off">关闭</option>
+        </select>
+      </label>
+      <p style="font-size:0.9em;color:#666;margin:6px 0 0 0;">说明：正常=完整效果，减少=较少颗粒，关闭=无效果（存储于 localStorage）</p>
+    </div>
+
+    <script> 
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() { 
+        // 初始化checkbox状态 
+        document.getElementById('nightModeSwitch').checked = !!getCookie('nightmode'); 
+        document.getElementById('toTopSwitch').checked = !getCookie('toTopDisable');
+        document.getElementById('linkCheckSwitch').checked = !getCookie('linkCheckDisable'); 
+
+        // 夜间模式切换 
+        document.getElementById('nightModeSwitch').addEventListener('change', function() { 
+            if (this.checked) { 
+                nightMode = true; 
+                document.body.style.backgroundColor = '#333'; 
+                document.body.style.color = '#fff'; 
+                inbody.style.backgroundColor = "#333"; 
+                document.cookie = "nightmode=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"; 
+            } else { 
+                nightMode = false; 
+                document.body.style.backgroundColor = ''; 
+                document.body.style.color = ''; 
+                inbody.style.backgroundColor = ""; 
+                document.cookie = "nightmode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; 
+            } 
+        }); 
+
+        // 回顶部按钮切换 
+        document.getElementById('toTopSwitch').addEventListener('change', function() { 
+            if (this.checked) { 
+                document.cookie = "toTopDisable=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; 
+            } else { 
+                document.cookie = "toTopDisable=enabled; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"; 
+            } 
+        });
+        
+        // 链接检测切换
+        document.getElementById('linkCheckSwitch').addEventListener('change', function() { 
+            if (this.checked) { 
+                document.cookie = "linkCheckDisable=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; 
+            } else { 
+                document.cookie = "linkCheckDisable=enabled; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"; 
+            } 
+        }); 
+    }); 
+    </script>
+    <script>
+      // 粒子设置 UI 与 storage 同步（轻量、不包含效果实现）
+      window.addEventListener('DOMContentLoaded', function(){
+        const clickSel = document.getElementById('particleClickMode');
+        const inputSel = document.getElementById('particleInputMode');
+        try{
+          const c = localStorage.getItem('particle_click_mode') || 'normal';
+          const i = localStorage.getItem('particle_input_mode') || 'normal';
+          clickSel.value = c;
+          inputSel.value = i;
+        }catch(e){}
+
+        function apply(){
+          try{
+            localStorage.setItem('particle_click_mode', clickSel.value);
+            localStorage.setItem('particle_input_mode', inputSel.value);
+          }catch(e){}
+          window.dispatchEvent(new CustomEvent('particle-settings-changed',{detail:{clickMode: clickSel.value, inputMode: inputSel.value}}));
+        }
+
+        clickSel.addEventListener('change', apply);
+        inputSel.addEventListener('change', apply);
+      });
+    </script>
+    <!--看什么源代码呢，很好看吗-->
+</div>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles2.css"> <!-- 引入样式表 -->
+</html>

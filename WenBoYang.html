@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永远怀念杨文博同学</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #e6f2ff;
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .page-container {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* 奖状边框样式 */
+        .memorial-certificate {
+            background-color: #f8fbff;
+            border: 8px double #8cb4d9;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(140, 180, 217, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 角部装饰 */
+        .corner-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-color: #a3c6e9;
+        }
+        
+        .corner-top-left {
+            top: 15px;
+            left: 15px;
+            border-top: 3px solid;
+            border-left: 3px solid;
+        }
+        
+        .corner-top-right {
+            top: 15px;
+            right: 15px;
+            border-top: 3px solid;
+            border-right: 3px solid;
+        }
+        
+        .corner-bottom-left {
+            bottom: 15px;
+            left: 15px;
+            border-bottom: 3px solid;
+            border-left: 3px solid;
+        }
+        
+        .corner-bottom-right {
+            bottom: 15px;
+            right: 15px;
+            border-bottom: 3px solid;
+            border-right: 3px solid;
+        }
+        
+        /* 标题样式 */
+        .memorial-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #a3c6e9;
+        }
+        
+        .memorial-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3.5rem;
+            color: #4a6fa5;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .memorial-subtitle {
+            font-size: 1.5rem;
+            color: #7a9bc6;
+            font-weight: 400;
+        }
+        
+        /* 主要内容区域 */
+        .memorial-content {
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .memorial-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #3a5a7a;
+        }
+        
+        .memorial-name {
+            font-size: 2.8rem;
+            color: #2c5d9e;
+            margin: 30px 0;
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .memorial-name::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background-color: #a3c6e9;
+        }
+        
+        /* 事迹描述 */
+        .story-section {
+            background-color: rgba(230, 242, 255, 0.6);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #8cb4d9;
+            text-align: left;
+        }
+        
+        .story-title {
+            font-size: 1.3rem;
+            color: #4a6fa5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-title::before {
+            content: "⋆";
+            margin-right: 10px;
+            color: #8cb4d9;
+        }
+        
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #3a5a7a;
+        }
+        
+        /* 花朵装饰 */
+        .flower-decoration {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2rem;
+            color: #8cb4d9;
+            letter-spacing: 15px;
+        }
+        
+        /* 页脚 */
+        .memorial-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px dashed #a3c6e9;
+            color: #7a9bc6;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .memorial-certificate {
+        padding: 25px 20px;
+            }
+            
+            .memorial-title {
+                font-size: 2.8rem;
+            }
+            
+            .memorial-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .memorial-name {
+                font-size: 2.2rem;
+            }
+            
+            .memorial-text {
+                font-size: 1.2rem;
+            }
+            
+            .story-text {
+                font-size: 1.1rem;
+            }
+            
+            .corner-decoration {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .memorial-title {
+                font-size: 2.2rem;
+            }
+            
+            .memorial-name {
+                font-size: 1.8rem;
+            }
+            
+            .memorial-text {
+                font-size: 1.1rem;
+            }
+.story-text {
+                font-size: 1.1rem;
+            }
+            
+            .corner-decoration {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .memorial-title {
+                font-size: 2.2rem;
+            }
+            
+            .memorial-name {
+                font-size: 1.8rem;
+            }
+            
+            .memorial-text {
+                font-size: 1.1rem;
+            }
+            
+            .flower-decoration {
+                font-size: 1.5rem;
+                letter-spacing: 8px;
+            }
+            
+            .memorial-certificate {
+                padding: 20px 15px;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+@keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .floating {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+        
+        /* 背景装饰元素 */
+        .background-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(140, 180, 217, 0.1);
+            z-index: -1;
+        }
+        
+        .bg-element-1 {
+            width: 200px;
+            height: 200px;
+            top: 5%;
+            left: 5%;
+        }
+        
+        .bg-element-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 背景装饰元素 -->
+        <div class="background-element bg-element-1"></div>
+        <div class="background-element bg-element-2"></div>
+        
+        <!-- 主纪念证书 -->
+        <div class="memorial-certificate fade-in">
+            <!-- 角部装饰 -->
+            <div class="corner-decoration corner-top-left"></div>
+            <div class="corner-decoration corner-top-right"></div>
+            <div class="corner-decoration corner-bottom-left"></div>
+            <div class="corner-decoration corner-bottom-right"></div>
+            
+            <!-- 标题区域 -->
+<div class="memorial-header">
+                <h1 class="memorial-title">永远怀念</h1>
+                <p class="memorial-subtitle">In Eternal Memory</p>
+            </div>
+            
+            <!-- 主要内容 -->
+            <div class="memorial-content">
+                <p class="memorial-text">
+                    在此，我们以沉重的心情纪念我们的同学、朋友
+                </p>
+                
+                <div class="memorial-name floating">杨文博</div>
+                
+                <p class="memorial-text">
+                    他的人生因一场意外而改变了轨迹<br>
+                    留下的是我们无尽的思念与回忆
+                </p>
+                
+                <!-- 花朵装饰 -->
+                <div class="flower-decoration">⋆ ⋆ ⋆</div>
+                
+                <!-- 事迹描述 -->
+                <div class="story-section fade-in">
+                    <h3 class="story-title">关于文博</h3>
+                    <p class="story-text">
+                        杨文博同学曾是我们中的一员，他聪明、善良，总是带着温暖的笑容。然而，一次不幸的事件改变了一切——他因想要跳楼梯而受伤入院，最终不得不离开校园。这件事提醒我们不要冲动行事，也让我们更加珍惜彼此。虽然他已离开，但他的身影将永远留在我们的记忆里。
+                    </p>
+                    <p>关于那次事件：他在篮球场王者三排时，碰巧遇到“大班长”，他生活不如意想搞一搞别人，走上来就扯校牌查看。而“大班长”正好认识刘国纪，于是便直接没收了三人的手机。杨文博从初中起就有心理疾病，躲过了老师和学生会，却没躲过这一祸，撞在了霉头上，这才引发了他的怒火。他虽然离开了这里，也会永远记住那个面容。</p>
+                    <p>提示：不要在篮球场坐着玩手机</p>
+                </div>
+                
+                <p class="memorial-text" style="margin-top: 30px;">
+                    愿你在一个人时仍旧快乐<br>
+                    愿你离开我们后仍旧记得
+                </p>
+                
+                <!-- 花朵装饰 -->
+                <div class="flower-decoration" style="margin-top: 40px;">⋆ ⋆ ⋆</div>
+            </div>
+            
+            <!-- 页脚 -->
+            <div class="memorial-footer">
+                <p>谨以此页纪念我们永远的同学——杨文博</p>
+                <p class="copyright">© Vanila</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为名字添加点击效果
+            const nameElement = document.querySelector('.memorial-name');
+            nameElement.addEventListener('click', function() {
+                this.style.color = '#1a3c6e';
+                setTimeout(() => {
+                    this.style.color = '#2c5d9e';
+                }, 500);
+            });
+            
+            // 为背景装饰元素添加浮动动画
+            const bgElements = document.querySelectorAll('.background-element');
+            bgElements.forEach((element, index) => {
+                // 为每个背景元素设置不同的浮动动画
+                element.style.animation = `gentleFloat ${6 + index * 2}s ease-in-out infinite`;
+                element.style.animationDelay = `${index * 0.5}s`;
+            });
+// 添加滚动时的淡入效果
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有需要淡入的元素
+            const fadeElements = document.querySelectorAll('.story-section, .memorial-text');
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // 页面加载完成后，为正文内容添加轻微的逐行显示效果
+            const memorialTexts = document.querySelectorAll('.memorial-text');
+            memorialTexts.forEach((text, index) => {
+                text.style.opacity = '0.8';
+                setTimeout(() => {
+                    text.style.transition = 'opacity 1s ease-in-out';
+                    text.style.opacity = '1';
+                }, 300 + index * 300);
+            });
+        });
+    
+    // 大雪纷飞效果脚本 - 减慢200%版本
+(function() {
+    'use strict';
+    
+    // 配置参数 - 减慢200%
+    const config = {
+        snowflakeCount: 100,         // 增加雪花数量，因为速度变慢
+        animationDuration: 4000,    // 动画持续时间延长到4秒
+        minSize: 2,                  // 雪花最小尺寸(px)
+        maxSize: 8,                  // 雪花最大尺寸(px)
+        minSpeed: 0.2,               // 最小下落速度(减慢200%)
+        maxSpeed: 0.8,               // 最大下落速度(减慢200%)
+        colors: ['#ffffff', '#f0f8ff', '#e6f2ff', '#d4e6ff'] // 雪花颜色(白色和淡蓝色系)
+    };
+    
+    // 创建雪花容器
+    const snowContainer = document.createElement('div');
+    snowContainer.className = 'snow-container';
+    
+    // 容器样式
+    Object.assign(snowContainer.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: '9999',
+        overflow: 'hidden'
+    });
+    
+    // 添加到页面
+    document.body.appendChild(snowContainer);
+    
+    // 雪花数组，用于清理
+    const snowflakes = [];
+    
+    // 创建雪花
+    function createSnowflakes() {
+        // 移除现有雪花
+        snowflakes.forEach(flake => {
+            if (flake.element && flake.element.parentNode) {
+                flake.element.parentNode.removeChild(flake.element);
+            }
+        });
+        snowflakes.length = 0;
+        
+        // 根据窗口大小调整雪花数量，保持密度一致
+        const windowArea = window.innerWidth * window.innerHeight;
+        const baseArea = 800 * 600; // 基准面积(中等屏幕)
+        const adjustedCount = Math.floor(config.snowflakeCount * (windowArea / baseArea));
+        const flakeCount = Math.min(Math.max(adjustedCount, 60), 250); // 限制在60-250之间
+        
+        for (let i = 0; i < flakeCount; i++) {
+            createSnowflake(i);
+        }
+    }
+    
+    // 创建单个雪花
+    function createSnowflake(index) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        
+        // 随机属性
+        const size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
+        const speed = Math.random() * (config.maxSpeed - config.minSpeed) + config.minSpeed;
+        const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+        const startX = Math.random() * 100; // 水平起始位置(百分比)
+        const startY = -10 - Math.random() * 20; // 垂直起始位置(稍微在屏幕上方)
+        const rotation = Math.random() * 360; // 初始旋转角度
+        const opacity = 0.7 + Math.random() * 0.3; // 透明度
+        const swayAmplitude = 3 + Math.random() * 15; // 摆动幅度(减小)
+        const swaySpeed = 0.3 + Math.random() * 0.9; // 摆动速度(减慢)
+        
+        // 应用样式
+        Object.assign(snowflake.style, {
+            position: 'absolute',
+            width: `${size}px`,
+            height: `${size}px`,
+            backgroundColor: color,
+            borderRadius: '50%',
+            filter: 'blur(0.5px)',
+            left: `${startX}%`,
+            top: `${startY}%`,
+            opacity: opacity.toString(),
+            transform: `rotate(${rotation}deg)`,
+            pointerEvents: 'none',
+            willChange: 'transform, opacity',
+            transition: 'opacity 2s ease-out' // 添加淡出过渡
+        });
+        
+        // 添加到容器
+        snowContainer.appendChild(snowflake);
+        
+        // 存储雪花数据
+        const flakeData = {
+            element: snowflake,
+            size: size,
+            speed: speed,
+            startX: startX,
+            swayAmplitude: swayAmplitude,
+            swaySpeed: swaySpeed,
+            swayOffset: Math.random() * Math.PI * 2, // 随机相位偏移
+            startTime: Date.now(),
+            rotationSpeed: 5 + Math.random() * 10 // 旋转速度(减慢)
+        };
+        
+        snowflakes.push(flakeData);
+        return flakeData;
+    }
+    
+    // 动画循环
+    function animateSnow() {
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - startTime;
+        
+        // 如果动画时间已到，停止动画并移除雪花
+        if (elapsedTime >= config.animationDuration) {
+            stopSnowAnimation();
+            return;
+        }
+        
+        // 计算进度(0到1之间)
+        const progress = elapsedTime / config.animationDuration;
+        
+        // 更新每个雪花的位置
+        snowflakes.forEach(flake => {
+            if (!flake.element) return;
+            
+            // 计算垂直位置(基于时间和速度) - 速度减慢200%
+            const verticalProgress = ((currentTime - flake.startTime) / 1000) * flake.speed;
+            const yPos = (verticalProgress * 60) % (window.innerHeight + 50); // 减小垂直移动距离
+            
+            // 计算水平摆动 - 摆动减慢
+            const sway = Math.sin((currentTime / 1000) * flake.swaySpeed + flake.swayOffset) * flake.swayAmplitude;
+            const xPos = flake.startX + (sway * (flake.size / config.maxSize));
+            
+            // 计算旋转 - 旋转减慢
+            const rotation = (currentTime / 1000) * flake.rotationSpeed + flake.swayOffset * 10;
+            
+            // 计算淡出效果(最后1秒开始淡出)
+            let opacity = 1;
+            if (progress > 0.75) {
+                opacity = 1 - ((progress - 0.75) / 0.25);
+            }
+            // 应用变换
+            flake.element.style.transform = `translate(${xPos}%, ${yPos}vh) rotate(${rotation}deg)`;
+            flake.element.style.opacity = opacity.toString();
+            
+            // 如果雪花移出屏幕底部，重置到顶部
+            if (yPos > window.innerHeight) {
+                flake.startTime = currentTime;
+                flake.element.style.top = '-20px';
+            }
+        });
+        
+        // 继续动画
+        animationFrame = requestAnimationFrame(animateSnow);
+    }
+    
+    // 停止动画并移除雪花
+    function stopSnowAnimation() {
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+        }
+        
+        // 淡出雪花
+        snowflakes.forEach(flake => {
+            if (flake.element) {
+                flake.element.style.opacity = '0';
+            }
+        });
+        
+        // 2秒后移除所有雪花
+        setTimeout(() => {
+            if (snowContainer.parentNode) {
+                snowContainer.parentNode.removeChild(snowContainer);
+            }
+        }, 2000);
+    }
+    
+    // 窗口调整大小时重新创建雪花以保持密度
+    let resizeTimeout;
+    function handleResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            createSnowflakes();
+        }, 250);
+    }
+// 变量
+    let startTime;
+    let animationFrame;
+    
+    // 初始化
+    function initSnow() {
+        // 移除现有的雪花容器(如果存在)
+        const existingContainer = document.querySelector('.snow-container');
+        if (existingContainer && existingContainer.parentNode) {
+            existingContainer.parentNode.removeChild(existingContainer);
+        }
+        
+        // 重新添加到body
+        document.body.appendChild(snowContainer);
+        
+        // 创建雪花
+        createSnowflakes();
+        
+        // 开始动画
+        startTime = Date.now();
+        animationFrame = requestAnimationFrame(animateSnow);
+        
+        // 添加窗口调整大小监听
+        window.addEventListener('resize', handleResize);
+    }
+    
+    // 页面加载完成后开始下雪
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSnow);
+    } else {
+        // DOM已经加载完成
+        initSnow();
+    }
+    
+    // 提供公共方法，以便在需要时可以手动触发
+    window.snowEffect = {
+        start: function(duration) {
+            if (duration) {
+                config.animationDuration = duration;
+            }
+            initSnow();
+        },
+        stop: stopSnowAnimation
+    };
+})();
+     
+    </script>
+</body>
+</html>

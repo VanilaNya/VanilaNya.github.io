@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账号</title>
+    <script src="/script2.js"></script><!--引入脚本-->
+    <link rel="stylesheet" type="text/css" href="/styles.css"> <!-- 引入样式表 -->
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+    <style>
+        body {
+        background-image: url('/data/gamedevelopment.jpg');
+        background-size: cover; /* 背景图片自动调整大小以覆盖整个页面 */
+        background-repeat: no-repeat; /* 防止背景图片重复 */
+        background-position: center; /* 背景图片居中显示 */
+        }
+    </style>
+</head>
+<header>
+    <div data-navbar-id="main" class="navbar-placeholder"></div>
+</header>
+<body>
+<div class="inbody">
+
+
+
+    <!--看什么源代码呢，很好看吗-->
+</div>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="script.js"></script>
+<script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+    // 获取inbody容器（根据class选择器）
+    const inbodyContainer = document.querySelector('.inbody');
+    if (!inbodyContainer) {
+        console.error('未找到class为"inbody"的容器');
+        return;
+    }
+
+
+
+
+    function isLoggedIn() {
+        const account = getCookie('account');
+        const user = getCookie('user');
+        return !!user;
+    }
+
+
+    function getCurrentUser() {
+        return getCookie('user') || '';
+    }
+
+
+    function handleLogout() {
+        // 清除account和user Cookie
+        document.cookie = 'account=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        window.location.reload(); // 刷新页面更新状态
+    }
+
+
+    function updateInbodyContent() {
+        // 清空容器原有内容（避免重复）
+        inbodyContainer.innerHTML = '';
+
+        if (isLoggedIn()) {
+            // 已登录状态：显示账号和退出按钮
+            const user = getCurrentUser();
+            // 创建元素
+            const welcomeTitle = document.createElement('h2');
+            welcomeTitle.textContent = `欢迎，${user}`;
+            
+            const logoutBtn = document.createElement('button');
+            logoutBtn.className = 'btn'; // 复用您现有的.btn样式
+            logoutBtn.textContent = '退出登录';
+            logoutBtn.addEventListener('click', handleLogout);
+
+            // 插入容器
+            inbodyContainer.appendChild(welcomeTitle);
+            inbodyContainer.appendChild(logoutBtn);
+        } else {
+            // 未登录状态：显示提示和登录按钮
+            const notLoggedInText = document.createElement('p');
+            notLoggedInText.textContent = '当前未登录';
+            notLoggedInText.style.color = '#ff4d4f'; // 红色提示（可选）
+
+            const loginBtn = document.createElement('button');
+            loginBtn.className = 'btn'; // 复用您现有的.btn样式
+            loginBtn.textContent = '去登录';
+            loginBtn.addEventListener('click', () => {
+                // 替换为您的登录页路径（例如：login.html）
+                window.location.href = 'login.html'; 
+            });
+
+            // 插入容器
+            inbodyContainer.appendChild(notLoggedInText);
+            inbodyContainer.appendChild(loginBtn);
+        }
+    }
+
+    // 初始化时更新一次状态
+    updateInbodyContent();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="/styles2.css"> <!-- 引入样式表 -->
+</html>

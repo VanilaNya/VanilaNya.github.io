@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="HLR">
+        <title>站长的音乐盒</title>
+        <link rel="stylesheet" type="text/css" href="/old_styles.css">
+            <script>
+                document.addEventListener('DOMContentLoaded', function(){
+              const toggleBtn = document.getElementById('toggleBtn');
+              const content = document.querySelector('.collapsible');
+            
+              toggleBtn.addEventListener('click', function() {
+                const computedStyle = window.getComputedStyle(content);
+                const contentHeight = computedStyle.height;
+            
+                if (contentHeight === '0px') {
+                  content.style.height = '200px';
+                } else {
+                  content.style.height = '0px';
+                }
+              });
+            });
+            </script>
+            <h1 id="标题">站长的音乐盒</h1>
+        </header>
+    </head>
+    <body>
+        <!--怎么，还翻源代码捏-->
+        <p>这里是站长的音乐盒！你随时可以来这里听听站长喜爱的音乐！</p>
+        <s>提示：这里的音乐可以叠加播放</s>
+        <h4>原</h4>
+        <button id="toggleBtn">展开/收起</button>
+    <div class="collapsible">
+        <a>♪让风告诉你♪</a>
+        <audio controls>
+            <source src="素材\让风告诉你.ogg" type="audio/ogg">
+        </audio>
+        <br>
+        <a>净善的遐歌（纳西妲PV）</a>
+        <audio controls>
+            <source src="素材\HOYO-MiX - Surasthana Fantasia 净善的遐歌.flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>斩雾破竹（战斗曲）</a>
+        <audio controls>
+            <source src="素材\陈致逸 _ HOYO-MiX - Duel in the Mist 斩雾破竹.flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>麟跃幽岩（甘雨PV）</a>
+        <audio controls>
+            <source src="素材\陈致逸 _ HOYO-MiX - Qilin's Prance 麟跃幽岩.flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>急如猛火（战斗曲）</a>
+        <audio controls>
+            <source src="素材\陈致逸 _ HOYO-MiX - Rapid as Wildfires 疾如猛火.flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>须弥</a>
+        <audio controls>
+            <source src="素材\HOYO-MiX - Sumeru 须弥.flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>狮尾之舞（战斗曲）</a>
+        <audio controls>
+            <source src="素材\HOYO-MiX - Swirls of Shamshir 狮尾之舞.flac" type="audio/flac">
+        </audio>
+        <hr>
+        </div>
+        <h4>其他</h4>
+        <a>危机预知（战斗曲）</a>
+        <audio controls>
+            <source src="素材\HOYO-MiX - 危机预知 Crises [mqms2].flac" type="audio/flac">
+        </audio>
+        <br>
+        <a>室内系的TrackMaker</a>
+        <audio controls>
+            <source src="素材\hanser - 室内系的TrackMaker [mqms2].ogg" type="audio/flac">
+        </audio>
+    </body>
+</html>

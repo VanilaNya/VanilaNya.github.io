@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DickSuckAI下载</title>
+    <style>
+        /* 共用样式 - 与主站一致 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 导航栏 - 与主站一致 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .nav-links a.active {
+            color: #3498db;
+        }
+        
+        /* 下载页特有样式 */
+        .download-hero {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .download-hero h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .download-hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* 下载选项 */
+        .download-options {
+            padding: 80px 0;
+        }
+        
+        .platform-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .platform-tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #7f8c8d;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .platform-tab.active {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .platform-tab:hover:not(.active) {
+            color: #2c3e50;
+        }
+        
+        .platform-content {
+            display: none;
+        }
+        
+        .platform-content.active {
+            display: block;
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .version-selector {
+            margin-bottom: 30px;
+        }
+        
+        .version-selector label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .version-selector select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .download-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .download-details {
+            margin-top: 40px;
+        }
+        
+        .system-requirements {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .system-requirements h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        /* 其他下载选项 */
+        .other-downloads {
+            padding: 50px 0;
+            background: #f8f9fa;
+        }
+        
+        .other-downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .other-download-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .other-download-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        /* 页脚 - 与主站一致 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 - 与主站一致 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DickSuckAI</div>
+                <div class="nav-links">
+                    <a href="dicksuck.html">首页</a>
+                    <a href="download.html" class="active">下载</a>
+                    <a href="dinjia.html">定价</a>
+                    <a href="https://pd.qq.com/s/3eq5v0wid">骚扰我们</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 下载页内容 -->
+    <section class="download-hero">
+        <div class="container">
+            <h1>下载DickSuckAI</h1>
+            <p>获取最新版本的DickSuckAI，开始提升您的工作效率。适用于各种平台和设备。</p>
+        </div>
+    </section>
+
+    <section class="download-options">
+        <div class="container">
+            <div class="platform-tabs">
+                <div class="platform-tab active" data-tab="windows">Windows</div>
+                <div class="platform-tab" data-tab="mac">macOS</div>
+                <div class="platform-tab" data-tab="linux">Linux</div>
+                <div class="platform-tab" data-tab="mobile">移动端</div>
+            </div>
+            
+            <!-- Windows 下载 -->
+            <div class="platform-content active" id="windows">
+                <div class="download-card">
+                    <h2>Windows 版本</h2>
+                    <div class="version-selector">
+                        <label for="windows-version">选择版本：</label>
+                        <select id="windows-version">
+                            <option value="latest">最新版 (v1.14.5.14)</option>
+                            <option value="v2.2.1">v1.14.5 (稳定版)</option>
+                            <option value="v2.1.5">v1.14 (长期支持版)</option>
+                            <option value="beta">v1.1.4 Beta (测试版)</option>
+                        </select>
+                        </div>
+        
+                    
+                    <a href="https://ys.mihoyo.com/" class="download-button">下载 Windows 版 (64位, 85MB)</a>
+                
+                    <div class="download-details">
+                        <p>系统要求：Windows 10 或更高版本</p>
+                        <p>文件类型：.exe</p>
+                        
+                        <div class="system-requirements">
+                            <h3>系统需求</h3>
+                            <ul>
+                                <li>操作系统：Windows 10/11 (64位)</li>
+                                <li>处理器：1.5GHz 或更快</li>
+                                <li>内存：4GB RAM (推荐8GB)</li>
+                                <li>存储空间：500MB 可用空间</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- macOS 下载 -->
+            <div class="platform-content" id="mac">
+                <div class="download-card">
+                    <h2>macOS 版本</h2>
+                    <div class="version-selector">
+                        <label for="mac-version">选择版本：</label>
+                        <select id="mac-version">
+                             <option value="latest">最新版 (v1.14.5.14)</option>
+                            <option value="v2.2.1">v1.14.5 (稳定版)</option>
+                            <option value="v2.1.5">v1.14 (长期支持版)</option>
+                        </select>
+                    </div>
+                    
+                    <a href="https://mihoyo.com" class="download-button">下载 macOS 版 (Universal, 92MB)</a>
+                    
+                    <div class="download-details">
+                        <p>支持芯片：Intel 和 Apple Silicon</p>
+                        <p>文件类型：.dmg</p>
+                        
+                        <div class="system-requirements">
+                            <h3>系统需求</h3>
+                            <ul>
+                                <li>操作系统：macOS 11.0 (Big Sur) 或更高版本</li>
+                                <li>处理器：Intel Core i5 或 Apple M1</li>
+                                <li>内存：4GB RAM (推荐8GB)</li>
+                                <li>存储空间：500MB 可用空间</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linux 下载 -->
+            <div class="platform-content" id="linux">
+                <div class="download-card">
+                    <h2>Linux 版本</h2>
+                    <div class="version-selector">
+                        <label for="linux-version">选择版本：</label>
+                        <select id="linux-version">
+                             <option value="latest">最新版 (v1.14.5.14)</option>
+                            <option value="v2.2.1">v1.14.5 (稳定版)</option>
+                            <option value="v2.1.5">v1.14 (长期支持版)</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-button">下载 .deb 包 (Debian/Ubuntu)</a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-button" style="margin-left: 15px;">下载 .rpm 包 (Fedora/RHEL)</a>
+                    </div>
+                    
+                    <div class="download-details">
+                        <p>也可以通过以下命令安装：</p>
+                        <pre style="background: #f0f0f0; padding: 15px; border-radius: 5px;">
+# For Debian/Ubuntu
+curl -s https://dicksuckai.io/install.sh | bash</pre>
+                        
+                        <div class="system-requirements">
+                            <h3>系统需求</h3>
+                            <ul>
+                                <li>操作系统：Ubuntu 20.04+, Fedora 32+, 或其他现代发行版</li>
+                                <li>处理器：x86_64 或 ARM64</li>
+                                <li>内存：4GB RAM (推荐8GB)</li>
+                                <li>存储空间：500MB 可用空间</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 移动端下载 -->
+            <div class="platform-content" id="mobile">
+                <div class="download-card">
+                    <h2>移动端应用</h2>
+                    
+                    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 40px;">
+                        <div style="text-align: center;">
+                            <img src="https://via.placeholder.com/150" alt="App Store" style="width: 150px; height: auto; margin-bottom: 15px;">
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-button">App Store 下载</a>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <img src="https://via.placeholder.com/150" alt="Google Play" style="width: 150px; height: auto; margin-bottom: 15px;">
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-button">Google Play 下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="download-details" style="margin-top: 40px;">
+                        <div class="system-requirements">
+                            <h3>系统需求</h3>
+                            <ul>
+                                <li>iOS 版本：需要 iOS 14.0 或更高版本</li>
+                                <li>Android 版本：需要 Android 8.0 或更高版本</li>
+                                <li>设备要求：兼容 iPhone 6s 及以上或同等 Android 设备</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 其他下载选项 -->
+    <section class="other-downloads">
+        <div class="container">
+            <h2 class="section-title">其他下载选项</h2>
+            
+            <div class="other-downloads-grid">
+                <div class="other-download-card">
+                    <h3>赤石之旅</h3>
+                    <p>这是两个宅男做的狗屎游戏</p>
+                    <a href="https://vanillanya5.github.io/chishizhilv/chishizhilv.html" class="download-button" style="padding: 10px 20px; font-size: 0.9rem;">下载 JTS</a>
+                </div>
+                
+                <div class="other-download-card">
+                    <h3>下载DeepSuck</h3>
+                    <p>深度吮吸 一个更适合你的AI</p>
+                    <a href="https://vanillanya5.github.io/deepsuck" class="download-button" style="padding: 10px 20px; font-size: 0.9rem;">下载深度吮吸</a>
+                </div>
+                
+                <div class="other-download-card">
+                    <h3>下载 NeverGonnaGiveYouUp 官方MV</h3>
+                    <p>你被骗了</p>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-button" style="padding: 10px 20px; font-size: 0.9rem;">下载MV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 - 与主站一致 -->
+    <footer>
+        <div class="container">
+            <p>© 2077 PussyAI.co 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平台选项卡切换
+        document.querySelectorAll('.platform-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有活动状态
+                document.querySelectorAll('.platform-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                document.querySelectorAll('.platform-content').forEach(c => {
+                    c.classList.remove('active');
+                });
+                
+                // 添加当前活动状态
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // 版本选择器联动 (示例)
+        document.getElementById('windows-version').addEventListener('change', function() {
+            const version = this.value;
+            let buttonText = "下载 Windows 版";
+            let fileSize = "85MB";
+            
+            if(version === "beta") {
+                buttonText = "下载 Windows Beta 版 (95MB)";
+                fileSize = "95MB";
+            } else if(version === "v2.1.5") {
+                buttonText = "下载 Windows LTS 版 (80MB)";
+                fileSize = "80MB";
+            }
+            
+            document.querySelector('#windows .download-button').textContent = buttonText;
+        });
+    </script>
+</body>
+</html>

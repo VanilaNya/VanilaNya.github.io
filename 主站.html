@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN的旧主站</title>
+    <link rel="stylesheet" type="text/css" href="/old_styles.css">
+</head>
+<body>
+    <ul class="navbar navbar-nav">
+        <li><a href="百科主站.html">百科主站</a></li>
+        <li><a href="站长的音乐盒.html">音乐盒</a></li>
+        <li><a href="小工具.html">小工具</a></li>
+        <li><a href="紧急联络.html">紧急联络</a></li>
+        <li style="float:right"><a href="hlr5047.gnway.cc">调试面板</a></li>
+      </ul>
+    <h2>VN的旧主站</h2>
+    <p>出于怀旧，我不会大改网站的样式和内容，本站更新截至至2023左右</p>
+    <a href="index.html">新主站链接</a>
+    <p>别找我问上面这导航栏咋做的，爷抄的（自信）</p>
+    <p>纳西妲提瓦特第一可爱！</p>
+    <style type="text/css">
+        #div1 {width:350px;height:120px;padding:10px;border:1px solid #aaaaaa;}
+        </style>
+    <script>
+            function allowDrop(ev)
+            {
+                ev.preventDefault();
+            }
+            
+            function drag(ev)
+            {
+                ev.dataTransfer.setData("Text",ev.target.id);
+            }
+            
+            function drop(ev)
+            {
+                ev.preventDefault();
+                var data=ev.dataTransfer.getData("Text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>纳西妲PV</p></div>
+        <p>*快，拖进去</p>
+        <p>*=)</p>
+        <img id="drag1" src="素材\刀子图片.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+</body>
+</html>

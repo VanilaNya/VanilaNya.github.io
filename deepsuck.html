@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSuck</title>
+    <script src="script2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles.css"> <!-- 引入样式表 -->
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+    <style>
+        body {
+        background-image: url('/data/gamedevelopment.jpg');
+        background-size: cover; /* 背景图片自动调整大小以覆盖整个页面 */
+        background-repeat: no-repeat; /* 防止背景图片重复 */
+        background-position: center; /* 背景图片居中显示 */
+        }
+
+ .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: pink;
+            color: black;
+            border-radius: 30px;
+            font-size: 1.5em;
+            text-decoration: none;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .features {
+            display: grid;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .inbody {
+                padding: 10px;
+            }
+            .download-btn {
+                font-size: 1.2em;
+                padding: 15px 40px;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<header>
+    <div data-navbar-id="main" class="navbar-placeholder"></div>
+</header>
+<body>
+<div class="inbody">
+</div>
+<script>
+function createHearts(count = 8) {
+            const container = document.createElement('div');
+            Object.assign(container.style, {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none',
+                zIndex: '999'
+            });
+            document.body.appendChild(container);
+
+            class Heart {
+                constructor() {
+                    this.el = document.createElement('div');
+                    this.el.innerHTML = '❤';
+                    Object.assign(this.el.style, {
+                        position: 'absolute',
+                        fontSize: `${12 + Math.random() * 18}px`,
+                        color: `hsl(${Math.random()*360}, 70%, 60%)`,
+                        willChange: 'transform'
+                    });
+
+                    // 调整后的速度参数
+                    this.x = Math.random() * innerWidth;
+                    this.y = -100;
+                    this.vx = (Math.random() - 0.5) * 3;  // 减小水平速度
+                    this.vy = 1 + Math.random() * 1;     // 减小垂直初速度
+                    this.gravity = 0.1;                 // 减小重力加速度
+                    this.rotateSpeed = Math.random() * 0.8 + 0.2;
+                    
+                    container.appendChild(this.el);
+                }
+
+                update() {
+                    this.vy += this.gravity;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    
+                    this.el.style.transform = `
+                        translate(${this.x}px, ${this.y}px)
+                        rotate(${this.x * this.rotateSpeed}deg)
+                    `;
+
+                    return this.y < innerHeight + 200;
+                }
+            }
+
+            // 创建爱心实例
+            const hearts = Array.from({ length: count }, () => new Heart());
+
+            // 动画循环
+            function animate() {
+                hearts.forEach((heart, index) => {
+                    if (!heart.update()) {
+                        container.removeChild(heart.el);
+                        hearts.splice(index, 1);
+                    }
+                });
+
+                if (hearts.length > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    container.remove();
+                }
+            }
+            
+            requestAnimationFrame(animate);
+}
+    
+
+    
+    createDialog({
+        title: "年龄验证",
+        content: "根据相关法规，请确认您已年满18周岁",
+        buttons: [
+            { text: "已满18岁", value: "yes",color: "#4CAF50" },
+            { text: "未满18岁", value: "no",color: "#f44336" }
+        ]
+    }).then(ageConfirm => {
+        if (ageConfirm !== 'yes') {
+            document.querySelector('.inbody').innerHTML = `
+                <div class="validation-message">
+                    <h2>访问受限</h2>
+                    <p>根据您的选择，我们无法提供相关服务</p>
+                </div>`;
+            return;
+        }
+
+        // 用户协议
+        createDialog({
+            title: "使用协议",
+            content: "您理解并同意：所有生成内容均由用户自行负责，开发者不承担任何责任",
+            buttons: [
+                { text: "同意协议", value: "yes",color: "#2196F3",delay:3 },
+                { text: "拒绝", value: "no",color: "#9E9E9E" }
+            ]
+        }).then(agreement => {
+            if (agreement !== 'yes') {
+                document.querySelector('.inbody').innerHTML = `
+                    <div class="validation-message">
+                        <h2>服务不可用</h2>
+                        <p>您需要同意使用协议才能继续</p>
+                    </div>`;
+                return;
+            }
+            
+            // 加载主内容
+            renderContent();
+            createHearts(12);
+        }).catch(handleError);
+    }).catch(handleError);
+
+function renderContent() {
+    document.querySelector('.inbody').innerHTML = `
+        <div class="hero">
+            <h1>DeepSuck</h1>
+            <p>目前最为强大的生成式色情AI</p>
+            <a href="#" class="download-btn">Click here to download</a>
+            <p>这是划时代的色情AI，在性能和功能性上均远超过去的其他AI</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <h3>❤️ 完美的色情训练集</h3>
+                <p>DeepSuck的训练集使它能完美生成任何色情内容，接近现实和人类创作者</p>
+            </div>
+            <div class="feature-item">
+                <h3>🚀 多类型输出</h3>
+                <p>支持输出文本、图片、视频、音频，内置TTS功能，帮助您将灵感转化为创造</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔐 本地化隐私保护</h3>
+                <p>安全的的数据处理保障用户隐私安全，全程DNS加密，不再畏惧黑客入侵</p>
+            </div>
+        </div>
+        <p>友谊链接</p><a href="https://bailian0123.github.io/dicksuckai/dicksuck">DickSuck</a>`;
+
+    // 绑定下载事件（同步版）
+    document.querySelector('.download-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        createDialog({
+            title: "下载确认",
+            content: "即将开始下载DeepSuck（约214MB）",
+            buttons: [
+                { text: "确认下载", value: "yes" },
+                { text: "取消", value: "no" }
+            ]
+        }).then(confirm => {
+            if (confirm === 'yes') {
+                window.open("https://genshin.hoyoverse.com/", '_blank', 'noopener,noreferrer');
+            }
+        }).catch(handleError);
+    });
+}
+
+function handleError(error) {
+    console.error('系统错误:', error);
+    document.body.innerHTML = `
+        <div class="validation-message">
+            <h2>系统错误</h2>
+            <p>请刷新页面重试</p>
+        </div>`;
+}
+</script>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles2.css"> <!-- 引入样式表 -->
+</html>

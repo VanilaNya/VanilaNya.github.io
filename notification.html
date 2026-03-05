@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5的Notification-Web的桌面通知功能</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" type='text/javascript'></script>
+</head>
+<body>
+ 
+<div class="row">
+    <div class="col-md-12">
+        <button id="showNoti">点击通知</button>
+    </div>
+</div>
+ 
+<script>
+    
+    function creatNotification() {
+        var instanceNotification = new Notification("您有一条订单消息，请及时处理！", { "icon": "", "body": "快点击处理吧!","requireInteraction":true });
+        instanceNotification.onshow = function () {
+            console.log("显示通知");
+            //3s后自动关闭通知
+            setTimeout(function () {
+                instanceNotification.close()
+            }, 3*1000);
+        };
+        instanceNotification.onclick = function () {
+            alert("打开页面");
+            window.open("/note");
+            instanceNotification.close();
+        };
+        instanceNotification.onclose = function () {
+            console.log("通知关闭");
+        };
+    }
+ 
+    $(function () {
+        $("#showNoti").click(function () {
+            creatNotification();
+        })
+    });
+ 
+    //设置一个定时器，每隔5分钟进行一次通知
+    setInterval("creatNotification()",5*60*1000);
+</script>
+</body>
+</html>

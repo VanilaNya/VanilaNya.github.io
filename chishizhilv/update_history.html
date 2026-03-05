@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤石之旅</title>
+    <script src="/script2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+    <style>
+        /* 新增时间线样式 - 极简风格 */
+        .timeline-mode .timeline {
+            display: block;
+            position: relative;
+            padding: 0 20px;
+            margin-top: 20px;
+        }
+        
+        .timeline-mode .timeline-item {
+            display: flex;
+            margin-bottom: 25px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .timeline-mode .timeline-time {
+            width: 25%;
+            padding-right: 15px;
+            text-align: right;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .timeline-mode .timeline-content {
+            width: 75%;
+            padding-left: 15px;
+        }
+        
+        .timeline-mode .timeline-content a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .timeline-mode .timeline-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .timeline-mode .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #ddd;
+            left: 25%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-mode .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3498db;
+            left: 25%;
+            top: 6px;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .timeline-mode .timeline-time {
+                width: 30%;
+            }
+            
+            .timeline-mode .timeline-content {
+                width: 70%;
+            }
+            
+            .timeline-mode .timeline::before {
+                left: 30%;
+            }
+            
+            .timeline-mode .timeline-item::before {
+                left: 30%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .timeline-mode .timeline-time {
+                width: 35%;
+            }
+            
+            .timeline-mode .timeline-content {
+                width: 65%;
+            }
+            
+            .timeline-mode .timeline::before {
+                left: 35%;
+            }
+            
+            .timeline-mode .timeline-item::before {
+                left: 35%;
+            }
+        }
+    </style>
+</head>
+<header>
+    <div data-navbar-id="JOS" class="navbar-placeholder"></div>
+</header>
+<body class="normal-mode">
+<div class="inbody">
+
+    <h1>赤石之旅更新日志</h1>
+    <a href="/chishizhilv/wiki/wiki.html">Wiki链接</a>
+    <p>目前仍在制作阶段且未发布任何demo，请耐心等待~</p>
+    
+    <label>
+        <input type="checkbox" id="timelineToggle">
+        时间线模式
+    </label>
+    <label>
+        <input type="checkbox" name="devEventToggle" class="dev-event-toggle">
+        开发事件显示
+    </label>
+    
+    <hr>
+    
+    <!-- 普通模式内容 -->
+    <div class="normal-content">
+        <h3>Version暂无版本</h3>
+        <h3>Alpha</h3>
+        <div class="fold show">
+            <a href="https://pd.qq.com/s/bvk1zi1fv?b=2">0.7.1</a><br>
+            <a href="https://pd.qq.com/s/fq3ugofxx?b=2">0.7 - 大型混合更新</a><br>
+        </div>
+        <div class="fold show">
+            <a href="https://pd.qq.com/s/3joar8o7g?b=2">0.6.1 - 负面状态更新</a><br>
+            <a href="https://pd.qq.com/s/1trnahzlh?b=2">0.6 fixed</a><br>
+            <a href="https://pd.qq.com/s/dvqgc53gq?b=2">0.6 - 大型混合更新</a><br>
+        </div>
+        <a b data-dev-event href="https://pd.qq.com/s/3cvblyrie?b=2">白脸基本退出开发</a><br data-dev-event>
+        <a b href="https://pd.qq.com/s/b5ozl4ijf?b=2">0.5</a><br>
+        <div class="fold show">
+            <a href="https://pd.qq.com/s/73k31rekj?b=2">0.4.4</a><br>
+            <a href="https://pd.qq.com/s/gdty9ggvz?b=2">0.4.3</a><br>
+            <a href="https://pd.qq.com/s/8ppn5s4tf?b=2">0.4.2</a><br>
+            <a href="https://pd.qq.com/s/homc4fkbs?b=2">0.4.1</a><br>
+            <a href="https://pd.qq.com/s/9rdfhmqhi?b=2">0.4</a><br>
+        </div>
+        <div class="fold show">
+            <a href="https://pd.qq.com/s/hdxyc8t2c?b=2">0.3.1</a><br>
+            <a href="https://pd.qq.com/s/6ihp2mpm0?b=2">0.3</a><br>
+        </div>
+        <a b href="https://pd.qq.com/s/7m5tzuvaf?b=2">0.2</a><br>
+        <div class="fold show">
+            <a href="https://pd.qq.com/s/9eipnltty?b=2">0.1.2</a><br>
+            <a href="https://pd.qq.com/s/6y4mija3y?b=2">0.1.1</a><br>
+            <a href="https://pd.qq.com/s/gzq1s8avd?b=2">0.1</a><br>
+        </div>
+        <p>远古版本无记录</p>
+    </div>
+    
+    <!-- 时间线模式内容 -->
+    <div class="timeline" style="display:none;">
+        <div class="timeline-item">
+            <div class="timeline-time">25/05/29</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/bvk1zi1fv?b=2">0.7.1</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">25/04/18</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/fq3ugofxx?b=2">0.7 - 大型混合更新</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">25/02/01</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/3joar8o7g?b=2">0.6.1 - 负面状态更新</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/12/21</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/1trnahzlh?b=2">0.6 fixed</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/12/21</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/dvqgc53gq?b=2">0.6 - 大型混合更新</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">12月中旬</div>
+            <div class="timeline-content">
+                <a b data-dev-event href="https://pd.qq.com/s/3cvblyrie?b=2">白脸基本退出开发</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/12/13</div>
+            <div class="timeline-content">
+                <a b href="https://pd.qq.com/s/b5ozl4ijf?b=2">0.5</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/11/21</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/73k31rekj?b=2">0.4.4</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/11/19</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/gdty9ggvz?b=2">0.4.3</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/11/18</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/8ppn5s4tf?b=2">0.4.2</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/11/16</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/homc4fkbs?b=2">0.4.1</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/11/04</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/9rdfhmqhi?b=2">0.4</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/10/27</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/hdxyc8t2c?b=2">0.3.1</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/09/11</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/6ihp2mpm0?b=2">0.3</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/09/03</div>
+            <div class="timeline-content">
+                <a b href="https://pd.qq.com/s/7m5tzuvaf?b=2">0.2</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/09/02</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/9eipnltty?b=2">0.1.2</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/08/29</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/6y4mija3y?b=2">0.1.1</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">24/08/27</div>
+            <div class="timeline-content">
+                <a href="https://pd.qq.com/s/gzq1s8avd?b=2">0.1</a>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-time">远古</div>
+            <div class="timeline-content">
+                远古版本无记录
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.dev-event-toggle');
+    const devEventElements = document.querySelectorAll('[data-dev-event]');
+    
+    // 设置开发事件初始状态
+    devEventElements.forEach(el => {
+        el.style.display = 'none';
+    });
+    
+    toggle.addEventListener('change', function() {
+        devEventElements.forEach(el => {
+            el.style.display = this.checked ? 'inline' : 'none';
+        });
+    });
+
+    const timelineToggle = document.getElementById('timelineToggle');
+    const body = document.body;
+    const timelineElement = document.querySelector('.timeline');
+    const normalContent = document.querySelector('.normal-content');
+
+    timelineToggle.addEventListener('change', function() {
+        if (this.checked) {
+            body.classList.add('timeline-mode');
+            timelineElement.style.display = 'block';
+            if (normalContent) normalContent.style.display = 'none';
+        } else {
+            body.classList.remove('timeline-mode');
+            timelineElement.style.display = 'none';
+            if (normalContent) normalContent.style.display = '';
+        }
+    });
+});
+</script>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="/script.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles2.css">
+</html>

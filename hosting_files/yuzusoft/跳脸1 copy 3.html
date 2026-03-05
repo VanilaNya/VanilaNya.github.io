@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        #white-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+        
+        #content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+        
+        #image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        /* 闪屏效果 */
+        .flash {
+            animation: flash 0.1s infinite;
+        }
+        
+        @keyframes flash {
+            0% { background-color: white; }
+            50% { background-color: black; }
+            100% { background-color: white; }
+        }
+        
+        #audio-control {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- 初始白屏 -->
+    <div id="white-screen">
+        <h1>加载中...</h1>
+    </div>
+    
+    <!-- 主要内容区域 -->
+    <div id="content">
+        <div id="image-container">
+            <img id="main-image" src="./png/恐怖之森.jpg" alt="展示图片">
+        </div>
+        <button id="audio-control">播放音频</button>
+    </div>
+    
+    <!-- 音频元素 -->
+    <audio id="background-audio" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const whiteScreen = document.getElementById('white-screen');
+            const content = document.getElementById('content');
+            const mainImage = document.getElementById('main-image');
+            const audioElement = document.getElementById('background-audio');
+            const audioControl = document.getElementById('audio-control');
+            const imageContainer = document.getElementById('image-container');
+            
+            // 1秒后显示内容
+            setTimeout(function() {
+                // 进入全屏模式
+                requestFullScreen();
+                
+                // 隐藏白屏，显示内容
+                whiteScreen.style.opacity = '0';
+                setTimeout(function() {
+                    whiteScreen.style.display = 'none';
+                    content.style.display = 'flex';
+                    
+                    // 开始闪屏效果
+                    startFlashing();
+                }, 300);
+                
+            }, 1000);
+            
+            // 全屏函数
+            function requestFullScreen() {
+                const element = document.documentElement;
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
+            
+            // 闪屏效果
+            function startFlashing() {
+                // 开始播放音频
+                audioElement.play().catch(e => {
+                    console.log("自动播放被阻止，需要用户交互");
+                    audioControl.style.display = 'block';
+                });
+                
+                // 添加闪屏类
+                imageContainer.classList.add('flash');
+            }
+            
+            // 音频控制按钮
+            audioControl.addEventListener('click', function() {
+                audioElement.play();
+                this.style.display = 'none';
+            });
+            
+            // 处理音频播放错误
+            audioElement.addEventListener('error', function() {
+                console.error("音频加载失败");
+                audioControl.textContent = "音频加载失败";
+            });
+        });
+    </script>
+</body>
+</html>

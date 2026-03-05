@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <script src="/script2.js"></script><!--引入脚本-->
+    <link rel="stylesheet" type="text/css" href="/styles.css"> <!-- 引入样式表 -->
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+</head>
+<header>
+    <div data-navbar-id="main" class="navbar-placeholder"></div>
+</header>
+<body>
+<div class="inbody" style="display: flex;">
+    <div style="flex: 1;">
+        <h1>404 Not found</h1>
+        <p>你访问的页面不存在，请检查URL！</p>
+        <br>
+        <button onclick="history.back()">返回(如果有上一页的话)</button>
+        <br>
+        <a href="setting.html">站内设置</a>
+        <br>
+        <button type="button" onclick="starfire()">点我预定star fire</button>
+    </div>
+    <div style="flex: 1; text-align: right;">
+        <figure>
+            <img src="/data/momo_angry.gif" alt="生气的桃井" style="width: 300px; height: auto;">
+            <figcaption>生气的桃井</figcaption>
+        </figure>
+        <br>
+        <audio controls>
+            <source src="/data/Momoi_ExSkill_Level_2.mp3" type="audio/mp3">
+            您的浏览器不支持音频元素。
+        </audio>
+    </div>
+    <script>
+        function starfire() {
+            if (window.confirm("是否预定星之火免费活动？")) {
+                alert('好的，star fire将会于明晚UTC 2:00送到您家门口');
+            } else {
+                alert('好的，star fire近期处于空闲状态，您可以随时预定');
+            }
+        }
+    </script>
+    <!--看什么源代码呢，很好看吗-->
+
+</div>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles2.css"> <!-- 引入样式表 -->
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主站</title>
+    <script src="/script2.js"></script><!--引入脚本-->
+    <link rel="stylesheet" type="text/css" href="/styles.css"> <!-- 引入样式表 -->
+    <link rel="icon" type="image/jpg" href="/data/favicon.jpg">
+    <style>
+        body {
+        background-image: url('/data/gamedevelopment.jpg');
+        background-size: cover; /* 背景图片自动调整大小以覆盖整个页面 */
+        background-repeat: no-repeat; /* 防止背景图片重复 */
+        background-position: center; /* 背景图片居中显示 */
+        }
+    </style>
+</head>
+<header>
+    <div data-navbar-id="main" class="navbar-placeholder"></div>
+</header>
+<body>
+<div class="inbody">
+
+    <h1>VanillaNya5的网站</h1>
+    <p>别问质量为什么这么低！我不会css也不会js，php也不会，求求你别骂了</p>
+    <p>求你们补药打我的静态网站，补药DDos我啊</p>
+    <p>这个网站存在的主要目的是供各位查询信息</p>
+    <br>
+    <a href="setting.html">站内设置</a>
+
+    <br>
+    <button type="button" onclick="starfire()">点我</button>
+    <script>
+        function starfire() {
+            if (window.confirm("是否预定星之火免费活动？")) {
+                alert('好的，star fire将会于明晚UTC 2:00送到您家门口');
+            } else {
+                alert('好的，star fire近期处于空闲状态，您可以随时预定');
+            }
+        }
+    </script>
+    <!--看什么源代码呢，很好看吗-->
+</div>
+<div id="muban2"></div>
+</body>
+<footer>
+    <div id="muban"></div>
+</footer>
+<script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles2.css"> <!-- 引入样式表 -->
+</html>

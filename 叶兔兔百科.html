@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="HLR">
+        <link rel="icon" href="素材\叶兔兔头像.jpg" type=" image/jpg" >
+        <title>叶兔兔百科</title>
+        <link rel="stylesheet" type="text/css" href="/old_styles.css">
+            <script>
+                document.addEventListener('DOMContentLoaded', function(){
+              const toggleBtn = document.getElementById('toggleBtn');
+              const content = document.querySelector('.collapsible');
+            
+              toggleBtn.addEventListener('click', function() {
+                const computedStyle = window.getComputedStyle(content);
+                const contentHeight = computedStyle.height;
+            
+                if (contentHeight === '0px') {
+                  content.style.height = '720px';
+                } else {
+                  content.style.height = '0px';
+                }
+              });
+            });
+            </script>
+        <header>
+          <ul class="navbar navbar-nav"><!--导航栏-->
+            <li><a href="百科主站.html">回到百科主站</a></li>
+            <li style="float:right"><a href="主站.html">回到主站</a></li>
+          </ul>
+          <h1 id="标题">叶兔兔百科</h1>
+        </header>
+    </head>
+    <body>
+        <!--怎么，还翻源代码捏-->
+        <p>这是一个关于叶兔兔的网站，非常辣只因，但是勉强能看</p>
+        <h5>任何草神厨不要和叶兔兔交谈，包括男生，否则你可能会被________</h5>
+        <a>♪让风告诉你♪</a>
+        <audio controls>
+            <source src="素材\让风告诉你.ogg" type="audio/ogg">
+        </audio>
+        <hr>
+        <h2>叶兔兔</h2>
+        <p>别称：</p>
+        <ul>
+            <li>草兔</li>
+            <li>草元素兔子</li>
+            <li>小吉祥草兔</li>
+            <li><div class="tooltip">████
+                <span class="tooltiptext">-<s>变态</s>-</span>
+              </div></li>
+        </ul>
+        <p>男，生日未知，身高未知</p>
+        <p>喜好：涩涩、原神、纳西妲</p>
+        <p>QQ号：2571513255<p>
+        <hr>
+        <p>大部分人都被他性骚扰过，即使对面是男生<p>
+        <p>另外，兔兔可攻可受，如果你比他更黄，那么你可以很轻松的发动攻势<p>
+        <p>叶兔兔犯罪时的珍贵影像：（带有性暗示，不建议未成年人观看）</p>
+        <button id="toggleBtn">展开/收起</button>
+        <div class="collapsible">
+            <!-- 此div内是可被收起的文本，默认未被收起 -->
+            <img src="素材\叶兔兔犯罪素材1.jpg" alt="叶兔兔犯罪素材" width="124.25" height="978.5">
+            <img src="素材\叶兔兔犯罪素材2.jpg" alt="叶兔兔犯罪素材" width="155.5" mheight="99.5">
+            <img src="素材\叶兔兔犯罪素材3.png" alt="叶兔兔犯罪素材" width="215.8" mheight="318.6">
+          </div>
+        <p>从以上的图片中可以看出叶兔兔黄到极致</p>
+        <hr>
+        <a href="#标题">点我回顶部</a>
+        <h6>纳西妲提瓦特第一可爱！（没人看见吧）</h6>
+        <script>
+            //点击图片放大
+            var flag = true, //状态true为正常的状态,false为放大的状态
+              images = document.getElementsByTagName('img'); //获取所有图片元素
+            for (var i = 0; i < images.length; i++) {
+              //遍历所有图片元素
+              var img = images[i]; //当前图片元素
+              img.onclick = function() {
+                //图片点击事件
+                var imgH = this.height; //获取当前图片的高度
+                var imgW = this.width; //获取当前图片的宽度
+                if (flag) {
+                  //图片为正常状态,设置图片宽高为现在宽高的2倍
+                  flag = false; //把状态设为放大状态
+                  this.height = imgH * 2;
+                  this.width = imgW * 2;
+                } else {
+                  //图片为放大状态,设置图片宽高为现在宽高的二分之一
+                  flag = true; //把状态设为正常状态
+                  this.height = imgH / 2;
+                  this.width = imgW / 2;
+                }
+              }
+            }
+          </script>
+    </body>
+</html>

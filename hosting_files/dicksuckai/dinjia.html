@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DickSuckAI定价方案</title>
+    <style>
+        /* 共用样式 - 与主站一致 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 导航栏 - 与主站一致 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        /* 定价页面特有样式 */
+        .pricing-hero {
+            background: #f8f9fa;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* 定价卡片 */
+        .pricing-container {
+            padding: 80px 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #3498db;
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .pricing-header {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin: 15px 0;
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .pricing-desc {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .pricing-features {
+            padding: 30px;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+        }
+        
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: #2ecc71;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .pricing-button {
+            display: block;
+            text-align: center;
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .pricing-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* 比较表格 */
+        .comparison-section {
+            padding: 50px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table .feature-name {
+            font-weight: 500;
+            width: 30%;
+        }
+        
+        .yes {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .no {
+            color: #e74c3c;
+        }
+        
+        /* 常见问题 */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: #f8f9fa;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* 页脚 - 与主站一致 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 - 与主站一致 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DickSuckAI</div>
+                <div class="nav-links">
+                    <a href="dicksuck.html">首页</a>
+                    <a href="dsadownload.html">下载</a>
+                    <a href="pricing.html" class="active">定价</a>
+                    <a href="https://pd.qq.com/s/3eq5v0wid">骚扰我们</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 定价页内容 -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>畅用DickSuckAI</h1>
+            <p>谁买谁傻逼</p>
+        </div>
+    </section>
+
+    <section class="pricing-container">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- 基础版 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">基础版</h3>
+                        <div class="pricing-price">¥50 <span>/月</span></div>
+                        <p class="pricing-desc">适合个人用户和小型团队</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li>可访问部分功能</li>
+                            <li>每天100句对话</li>
+                            <li>提供基础技术支持</li>
+                            <li>最多1个用户</li>
+                            <li>每月数据备份</li>
+                        </li>
+                        <a href="#" class="pricing-button">开始基础版 ¥50/月</a>
+                    </div>
+                </div>
+                
+                <!-- 专业版 (推荐) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">最受欢迎</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">专业版</h3>
+                        <div class="pricing-price">¥98.8 <span>/月</span></div>
+                        <p class="pricing-desc">适合成长中的企业</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li>可访问全部功能</li>
+                            <li>每天500句对话</li>
+                            <li>提供高级技术支持</li>
+                            <li>最多3个用户</li>
+                            <li>每周数据备份</li>
+                            <li>高级分析报告</li>
+                        </ul>
+                        <a href="#" class="pricing-button">开始专业版 ¥98.8/月</a>
+                    </div>
+                </div>
+                
+                <!-- 企业版 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">企业版</h3>
+                        <div class="pricing-price">¥1145 <span>/年</span></div>
+                        <p class="pricing-desc">适合个人用户和小型团队</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li>可访问所有高级功能</li>
+                            <li>无线对话</li>
+                            <li>24/7专属高级技术支持</li>
+                            <li>最多5个用户</li>
+                            <li>每天数据备份</li>
+                            <li>特级分析报告</li>
+                        </li>
+                        <a href="#" class="pricing-button">开始企业版 ¥1145/年</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能比较表 -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">功能详细比较</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th class="feature-name">功能</th>
+                        <th>基础版</th>
+                        <th>专业版</th>
+                        <th>企业版</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">核心功能</td>
+                        <td class="no">✗ 不包含</td>
+                        <td class="yes">✓ 包含</td>
+                        <td class="yes">✓ 包含</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">高级功能</td>
+                        <td class="no">✗ 不包含</td>
+                        <td class="yes">✓ 包含</td>
+                        <td class="yes">✓ 包含</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">对话次数</td>
+                        <td>100句/天</td>
+                        <td>500句/天</td>
+                        <td>无限</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">用户数量</td>
+                        <td>最多1个</td>
+                        <td>最多3个</td>
+                        <td>最多5个</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">技术支持</td>
+                        <td>基础</td>
+                        <td>高级</td>
+                        <td>24/7专属</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">数据备份</td>
+                        <td>每月</td>
+                        <td>每周</td>
+                        <td>每日</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>我可以随时更改套餐吗？</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>当然可以！您可以随时升级或降级您的套餐。升级将立即生效，我们会按比例计算差价。降级将在当前计费周期结束后生效。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>是否有年度订阅折扣？</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>是的，选择年度订阅可享受相当于12个月免费的折扣。例如专业版按月支付是¥98.8/月，年度支付是¥1145/年（相当于¥95/月）。</p>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </section>
+
+    <!-- 页脚 - 与主站一致 -->
+    <footer>
+        <div class="container">
+            <p>© 2077 PussyAI.co 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ交互功能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // 关闭所有打开的FAQ
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-question span:last-child').textContent = '+';
+                });
+                
+                // 如果点击的不是当前打开的，则打开它
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    question.querySelector('span:last-child').textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

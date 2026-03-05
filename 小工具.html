@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小工具</title>
+    <link rel="stylesheet" type="text/css" href="/old_styles.css">
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+              const toggleBtn = document.getElementById('toggleBtn');
+              const content = document.querySelector('.collapsible');
+            
+              toggleBtn.addEventListener('click', function() {
+                const computedStyle = window.getComputedStyle(content);
+                const contentHeight = computedStyle.height;
+            
+                if (contentHeight === '0px') {
+                  content.style.height = '120px';
+                } else {
+                  content.style.height = '0px';
+                }
+              });
+            });
+            </script>
+</head>
+<body>
+    <ul class="navbar navbar-nav"><!--顶部导航栏-->
+        <li><a href="主站.html">回到主站</a></li>
+        <li><a href="VN的介绍.html">VN的介绍</a></li>
+        <li><a href="紧急联络.html">紧急联络</a></li>
+      </ul>
+    <h2>由VN提供的小工具</h2>
+    <h4>获取定位</h4><button id="toggleBtn">展开/收起</button>
+    <div class="collapsible">
+        <p id="demo">点击下方按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+        <button onclick="getLocation()">尝试获取网络定位</button>
+        <div id="demo"></div>
+        <script>//获取定位
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition, showError);
+                } else {
+                    x.innerHTML = "该浏览器不支持定位。";
+                }
+            }
+            
+            function showPosition(position) {
+                x.innerHTML = "纬度: " + position.coords.latitude + 
+                               "<br>经度: " + position.coords.longitude;	
+            }
+            
+            function showError(error) {
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "用户拒绝对获取地理位置的请求。";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "位置信息是不可用的。";
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "请求用户地理位置超时。";
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "未知错误。";
+                        break;
+                }
+            }
+        </script>
+        <button onclick="getLocation()">尝试获取GPS位置</button>
+        <script>//获取定位
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.watchPosition(showPosition, showError);
+                } else {
+                    x.innerHTML = "该浏览器不支持获取地理位置。";
+                }
+            }
+            
+            function showPosition(position) {
+                x.innerHTML = "纬度: " + position.coords.latitude + 
+                               "<br>经度: " + position.coords.longitude;	
+            }
+            
+            function showError(error) {
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "用户拒绝对获取地理位置的请求。";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "位置信息是不可用的。";
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "请求用户地理位置超时。";
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "未知错误。";
+                        break;
+                }
+            }
+        </script>
+    <hr>
+    </div>
+    <h4>获取你的浏览器信息和操作系统信息</h4>
+    <div id="browserInfo"></div>
+    <script>//获取浏览器信息
+  // 获取浏览器的名称和版本
+  var browserName = navigator.appName;
+  var browserVersion = navigator.appVersion;
+
+  // 获取操作系统的名称和版本
+  var operatingSystem = navigator.platform;
+
+  // 将浏览器和操作系统信息插入到页面中
+  var browserInfo = document.getElementById("browserInfo");
+  browserInfo.innerHTML = "浏览器：" + browserName + " " + browserVersion + "<br>操作系统：" + operatingSystem;
+    </script>
+    <p>纳西妲提瓦特第一可爱！</p>
+</body>
+</html>

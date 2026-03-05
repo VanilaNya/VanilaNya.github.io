@@ -1,0 +1,50 @@
+/* 回顶部 */
+.trigger-btn { padding: 10px 20px; margin: 8px; background: #0078d4; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+.windows-notification {
+    position: fixed; right: 20px; bottom: 20px; width: 320px; border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15); padding: 16px 16px 0 16px; min-height: 80px;
+    opacity: 0; transform: translateY(40px);
+    transition: transform .25s, opacity .25s;
+    border: 2px solid #b0b0b0;
+    background: #fff;
+    color: #222;
+}
+.windows-notification.night {
+    background: #23272e;
+    color: #eee;
+    border-color: #444;
+}
+.windows-notification.show { opacity: 1; transform: translateY(0);}
+.notification-title { font-weight: bold; margin-bottom: 8px;}
+.notification-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 8px;}
+.notification-progress { height: 3px; background: #e0e0e0; border-radius: 2px; width: 100%; position: absolute; left: 0; bottom: 0;}
+.windows-notification.night .notification-progress { background: #444; }
+.progress-fill { height: 100%; background: #0078d4; width: 100%; transition: width .05s;}
+.windows-notification.night .progress-fill { background: #4fa3ff; }
+.notification-timetip { position: absolute; right: 12px; bottom: 8px; font-size: 12px; color: #888;}
+.windows-notification.night .notification-timetip { color: #aaa; }
+
+#toTop {
+    width: 100px;
+    height: 30px;
+    background: yellowgreen;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    position: fixed; /*使用固定定位*/
+    bottom: 130px;
+    right: 20px;
+    cursor: pointer; /* 鼠标悬停时变为指针 */
+    transition: opacity 0.2s;
+    opacity: 1;
+    
+}
+
+#toTop.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#toTop:hover {
+    background-color: rgb(130, 173, 44); /* 鼠标悬停时背景变为浅灰色 */
+}
